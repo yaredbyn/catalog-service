@@ -31,6 +31,6 @@ jobs:
           output-format: sarif
       - name: Upload vulnerability report
         uses: github/codeql-action/upload-sarif@v3
-        if: success() || failure()
+        if: ${{ steps.scan.outputs.sarif != '' }}
         with:
           sarif_file: ${{ steps.scan.outputs.sarif }}
